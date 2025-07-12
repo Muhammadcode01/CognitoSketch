@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CognitoSketch: AI-powered intent-based UI generator." />
+    <meta name="keywords" content="UI generator, AI UI composer, CognitoSketch, front-end tool" />
+    <meta name="author" content="CognitoSketch Team" />
+    <title>CognitoSketch | Intent-Driven UI Composer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlalDLrpkC8I/S1uD2W/R71x7J0p2+9k+tLz2Zl/yN+J01l0G6/2fPzG/u/k+m+w+h+Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header class="app-header">
+        <div class="container header-content">
+            <h1 class="app-title">CognitoSketch</h1>
+            <nav class="main-nav">
+                <a href="#about" class="nav-link">About</a>
+                <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" class="nav-link github-link" aria-label="View on GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <div class="container content-grid">
+            <section class="input-section">
+                <h2 class="section-title">Describe Your UI Element</h2>
+                <p class="section-description">Enter your desired UI component description (e.g., "a vibrant blue button with text 'Submit' and rounded corners").</p>
+                <textarea id="uiDescriptionInput" class="ui-input-textarea" placeholder="Type your UI idea here..." rows="6"></textarea>
+                <div class="btn-group">
+                    <button id="generateButton" class="btn btn-primary">Generate UI</button>
+                    <button id="clearButton" class="btn btn-secondary">Clear</button>
+                </div>
+            </section>
+
+            <section class="output-section">
+                <h2 class="section-title">Generated UI Preview</h2>
+                <div id="uiPreviewArea" class="preview-box">
+                    <p class="placeholder-text">Your preview will appear here</p>
+                </div>
+
+                <h2 class="section-title">Generated Code</h2>
+                <div id="generatedCodeArea" class="code-box">
+                    <p class="placeholder-text">Generated code will appear here</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 CognitoSketch. All rights reserved.</p>
+            <p>Made with ❤️ by Your Team Name</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script> </body>
+</html>
