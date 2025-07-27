@@ -1,0 +1,358 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@300;400;600;700&display=swap'); /* Added 300 & 700 weights */
+
+/* --- CSS Variables (Custom Properties) --- */
+:root {
+    /* Colors */
+    --color-primary: #007bff; /* Blue for primary actions */
+    --color-primary-dark: #0056b3;
+    --color-secondary: #6c757d; /* Grey for secondary actions/text */
+    --color-secondary-light: #e0e0e0;
+    --color-secondary-dark: #5a6268;
+    --color-text-dark: #2d3748; /* Dark text/headings */
+    --color-text-medium: #555;
+    --color-text-light: #f8f8f8; /* Light text for dark backgrounds */
+    --color-background-light: #f8f8f8; /* Page background */
+    --color-background-medium: #f0f0f0; /* Preview box background */
+    --color-background-dark: #2d3748; /* Header/Code background */
+    --color-code-text: #4CAF50; /* Green for code */
+    --color-border: #ccc;
+
+    /* Spacing */
+    --space-xs: 8px;
+    --space-sm: 12px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 40px;
+    --space-xxl: 64px;
+
+    /* Fonts */
+    --font-family-body: 'Inter', sans-serif;
+    --font-family-code: 'Fira Code', monospace;
+    --font-size-base: 16px; /* Base font size for rem calculations */
+
+    /* Border Radius */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-full: 9999px; /* For pill shapes */
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.15); /* Slightly more pronounced */
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.25);
+    --shadow-inset: inset 0 2px 4px rgba(0,0,0,0.06);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease-out;
+    --transition-normal: 0.3s ease;
+}
+
+/* --- Resets --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Base Body Styles --- */
+body {
+    font-family: var(--font-family-body);
+    background-color: var(--color-background-light);
+    color: var(--color-text-medium);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased; /* Smoother fonts */
+    -moz-osx-font-smoothing: grayscale; /* Smoother fonts */
+    display: flex; /* Flexbox for sticky footer */
+    flex-direction: column;
+    min-height: 100vh; /* Ensures footer is at bottom */
+}
+
+/* --- Container --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-lg); /* Base padding */
+}
+
+/* Responsive padding for smaller screens */
+@media (max-width: 600px) {
+    .container {
+        padding: var(--space-md);
+    }
+}
+
+/* --- Header --- */
+.app-header {
+    background: linear-gradient(to right, var(--color-text-dark), var(--color-secondary-dark)); /* Using variables */
+    color: var(--color-text-light);
+    padding: var(--space-lg) 0;
+    box-shadow: var(--shadow-sm); /* Subtle shadow for header */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-title {
+    font-size: clamp(1.5rem, 4vw, 2.2rem); /* Fluid font size */
+    font-weight: 700; /* Bolder title */
+    color: var(--color-text-light);
+}
+
+.main-nav .nav-link {
+    color: var(--color-text-light);
+    text-decoration: none;
+    margin-left: var(--space-md);
+    transition: color var(--transition-normal);
+    font-weight: 600;
+}
+
+.main-nav .nav-link:hover,
+.main-nav .nav-link:focus { /* Added focus state for accessibility */
+    color: #a0d1ff; /* A lighter, brighter blue for hover */
+    outline: none; /* Remove default focus outline */
+}
+
+.main-nav .github-link {
+    font-size: 1.25rem; /* Larger GitHub icon */
+}
+
+/* --- Main Content Layout (Grid) --- */
+.app-main {
+    flex-grow: 1; /* Allows main content to take up available space */
+    padding: var(--space-xl) 0;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl); /* Larger gap for desktop */
+}
+
+/* Responsive Grid */
+@media (max-width: 992px) { /* Adjust breakpoint for larger tablets */
+    .content-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: var(--space-lg); /* Smaller gap when stacked */
+    }
+}
+
+/* --- Section Styling --- */
+.input-section, .output-section {
+    padding: 0; /* Container handles padding */
+}
+
+.section-title {
+    font-size: clamp(1.2rem, 3vw, 1.8rem); /* Fluid font size */
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+    color: var(--color-text-dark);
+}
+
+.section-description {
+    font-size: 1rem;
+    color: var(--color-text-medium);
+    margin-bottom: var(--space-md);
+}
+
+/* --- Textarea --- */
+.ui-input-textarea {
+    width: 100%;
+    min-height: 180px; /* Slightly taller */
+    padding: var(--space-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    font-family: var(--font-family-code);
+    font-size: 1rem;
+    box-shadow: var(--shadow-sm); /* Subtle shadow */
+    margin-bottom: var(--space-md);
+    resize: vertical; /* Allow only vertical resize */
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ui-input-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary); /* Highlight on focus */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Focus ring */
+}
+
+/* --- Buttons --- */
+.btn-group {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+    gap: var(--space-sm);
+    margin-top: var(--space-md); /* Added margin-top for btn-group */
+}
+
+.btn {
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    border: none;
+    font-size: 1rem; /* Consistent font size */
+    flex-grow: 1; /* Allows buttons to stretch */
+    min-width: 120px; /* Ensures buttons don't get too small */
+}
+
+@media (max-width: 480px) {
+    .btn {
+        flex-basis: 100%; /* Stack buttons on very small screens */
+    }
+}
+
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md); /* More pronounced shadow on hover */
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary-light);
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-border);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* --- Preview and Code Boxes --- */
+.preview-box {
+    min-height: 300px;
+    background-color: var(--color-background-medium);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Important for containing generated UI */
+    text-align: center;
+    padding: var(--space-lg);
+    position: relative; /* For placeholder text positioning */
+    box-shadow: var(--shadow-sm);
+}
+
+.code-box {
+    margin-top: var(--space-md);
+    background-color: var(--color-background-dark);
+    color: var(--color-code-text);
+    padding: var(--space-md);
+    border-radius: var(--border-radius-md);
+    font-family: var(--font-family-code);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    min-height: 100px; /* Give it a default height */
+}
+
+.code-box pre {
+    white-space: pre-wrap; /* Wrap long lines */
+    word-break: break-word; /* Break words if they are too long */
+    padding-right: var(--space-xl); /* Make space for copy button */
+}
+
+.placeholder-text {
+    color: var(--color-secondary);
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+#copyCodeBtn {
+    position: absolute;
+    top: var(--space-xs);
+    right: var(--space-xs);
+    background-color: var(--color-code-text);
+    color: var(--color-text-light);
+    border: none;
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.75rem; /* Slightly smaller for subtlety */
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+#copyCodeBtn:hover {
+    background-color: #43a047; /* Slightly darker green */
+    transform: translateY(-1px);
+}
+
+/* --- Footer --- */
+.app-footer {
+    background-color: var(--color-text-dark); /* Dark background matching header */
+    color: var(--color-secondary-light);
+    padding: var(--space-md) 0;
+    text-align: center;
+    margin-top: var(--space-xl); /* Space above footer */
+    font-size: 0.9rem;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.footer-content p {
+    margin-bottom: var(--space-xs);
+}
+
+.footer-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* General Link Styles (for generated UI if needed) */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Styles for the generated UI elements within preview-box (applied via inline style attribute in JS) */
+/* The styles here are just general resets/bases for what your JS generates.
+   Your JS is responsible for adding the specific styles to the element's style attribute. */
+#uiPreviewArea > * {
+    max-width: 100%; /* Ensures generated elements don't overflow */
+    height: auto;
+    box-sizing: border-box; /* Crucial for all elements to respect padding/border */
+    margin: var(--space-md) auto; /* Centers block elements in preview, adds spacing */
+    display: block; /* Default to block for most generated elements to prevent stacking issues in preview */
+    /* Override by JS for inline-block elements like buttons, inputs etc. */
+}
+/* Ensure generated buttons, links, kbd, span etc. remain inline-block if intended by JS */
+#uiPreviewArea button,
+#uiPreviewArea input,
+#uiPreviewArea a,
+#uiPreviewArea kbd,
+#uiPreviewArea span,
+#uiPreviewArea img {
+    display: inline-block;
+}
+
+/* Reset specific elements that might inherit odd styles */
+#uiPreviewArea input[type="text"],
+#uiPreviewArea input[type="email"],
+#uiPreviewArea input[type="password"],
+#uiPreviewArea input[type="number"],
+#uiPreviewArea input[type="date"],
+#uiPreviewArea textarea {
+    /* These specific input types will still get styles from JS. */
+    /* This ensures they don't get odd default browser styles */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
